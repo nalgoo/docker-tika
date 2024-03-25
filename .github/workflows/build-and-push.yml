@@ -23,10 +23,12 @@ jobs:
           images: |
             senasi/tika
           flavor: |
-            latest=true
+            latest=auto
           tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+            type=match,pattern=\d.\d.\d.\d,group=0
+            type=match,pattern=(\d.\d.\d).\d,group=1
+            type=match,pattern=(\d.\d).\d.\d,group=1
+            type=match,pattern=(\d).\d.\d.\d,group=1
       - name: Build and push
         id: build_push
         uses: docker/build-push-action@v5
