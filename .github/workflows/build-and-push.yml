@@ -1,3 +1,10 @@
+name: Build and push docker images
+
+on:
+  push:
+    tags:
+      - "*"
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
