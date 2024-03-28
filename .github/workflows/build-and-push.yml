@@ -25,6 +25,7 @@ jobs:
           flavor: |
             latest=auto
           tags: |
+            type=raw
             type=match,pattern=\d.\d.\d.\d,group=0
             type=match,pattern=(\d.\d.\d).\d,group=1
             type=match,pattern=(\d.\d).\d.\d,group=1
