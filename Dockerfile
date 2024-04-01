@@ -19,4 +19,4 @@ CMD ["/bin/sh", "-c", "/usr/sbin/cron && exec java -cp \"/tika-server-standard-$
 # revert to previous user
 USER 35002:35002
 
-RUN RUN crontab -l | { cat; echo "* * * * * /bin/sh -c /clean.sh"; } | crontab -
+RUN crontab -l | { cat; echo "* * * * * /bin/sh -c /clean.sh"; } | crontab -
