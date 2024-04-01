@@ -18,6 +18,6 @@ ENTRYPOINT []
 CMD ["/bin/sh", "-c", "/usr/sbin/cron && exec java -cp \"/tika-server-standard-${TIKA_VERSION}.jar:/tika-extras/*\" org.apache.tika.server.core.TikaServerCli -h 0.0.0.0 $0 $@"]
 
 # run as nobody
-USER nobody
+# USER nobody
 
 RUN crontab -l | { cat; echo "* * * * * /bin/sh -c /clean.sh"; } | crontab -
