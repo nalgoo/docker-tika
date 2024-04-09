@@ -6,8 +6,9 @@ USER 0
 ADD clean.sh /
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends cron tesseract-ocr-slk tesseract-ocr-ces && \
+    apt-get install --yes --no-install-recommends cron tesseract-ocr-slk tesseract-ocr-ces imagemagick python3-pip && \
     apt-get clean -y && \
+    pip3 install scikit-image && \
     mkdir /tika-extras && \
     wget https://repo1.maven.org/maven2/com/github/jai-imageio/jai-imageio-jpeg2000/1.4.0/jai-imageio-jpeg2000-1.4.0.jar -O /tika-extras/jai-imageio-jpeg2000-1.4.0.jar && \
     chmod +x /clean.sh && \
