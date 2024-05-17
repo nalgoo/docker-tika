@@ -6,7 +6,7 @@ USER 0
 ADD clean.sh /
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends cron tesseract-ocr-slk tesseract-ocr-ces imagemagick python3-pip && \
+    apt-get install --yes --no-install-recommends cron tesseract-ocr-slk tesseract-ocr-ces imagemagick python3-pip dumb-init && \
     apt-get clean -y && \
     pip3 install scikit-image && \
     mkdir /tika-extras && \
@@ -14,7 +14,7 @@ RUN apt-get update && \
     chmod +x /clean.sh && \
     chmod o+w+t /run
 
-ENTRYPOINT []
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 CMD ["/bin/sh", "-c", "/usr/sbin/cron && exec java -cp \"/tika-server-standard-${TIKA_VERSION}.jar:/tika-extras/*\" org.apache.tika.server.core.TikaServerCli -h 0.0.0.0 $0 $@"]
 
